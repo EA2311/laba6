@@ -1,0 +1,145 @@
+package onpu;
+
+public class Lecturer implements Person {
+    private String surname;
+    private String name;
+    private int age;
+    private String cathedra;
+    private int salary;
+
+    public void setSurname(String surname){
+        this.surname=surname;
+    }
+    public void setName(String name){
+        this.name=name;
+    }
+    public void setAge(int age) {
+        if (age > 0)
+            this.age = age;
+        else System.out.println("Error!");
+    }
+    public String getSurname(){
+        return surname;
+    }
+    public String getName(){
+        return name;
+    }
+    public int getAge(){
+        return age;
+    }
+    public void setCathedra(String cathedra) {
+        this.cathedra = cathedra;
+    }
+
+    public void setSalary(int salary) {
+        if (salary > 0)
+            this.salary = salary;
+        else System.out.println("Error!");
+    }
+
+    public String getCathedra() {
+        return cathedra;
+    }
+
+    public int getSalary() {
+        return salary;
+    }
+
+    @Override
+    public void printInfo() {
+        System.out.println("Lecturer of cathedra: " + getCathedra() + " " + getSurname() + " " + getName()
+                + ", age: " + getAge() + " The salary: " + getSalary());
+    }
+}
+package onpu;
+
+public interface Person {
+    abstract void printInfo();
+}
+
+package onpu;
+
+public class Student implements Person {
+    private String surname;
+    private String name;
+    private int age;
+    private String group;
+    private int number;
+
+    public void setSurname(String surname){
+        this.surname=surname;
+    }
+    public void setName(String name){
+        this.name=name;
+    }
+    public void setAge(int age) {
+        if (age > 0)
+            this.age = age;
+        else System.out.println("Error!");
+    }
+    public String getSurname(){
+        return surname;
+    }
+    public String getName(){
+        return name;
+    }
+    public int getAge(){
+        return age;
+    }
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    public void setNumber(int number) {
+        if (number >= 0)
+            this.number = number;
+        else System.out.println("Error!");
+    }
+
+    public String getGroup() {
+        return group;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    @Override
+    public void printInfo() {
+        System.out.println("Student of group: " + getGroup() + " " + getSurname() + " " + getName() + ", age: " + getAge() + ". Number of student's ticket: " + getNumber());
+    }
+}
+
+package onpu;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Student student1 = new Student();
+        student1.setName("Andrey");
+        student1.setSurname("Yerzhov");
+        student1.setAge(19);
+        student1.setGroup("AD-181");
+        student1.setNumber(1);
+
+        Student student2 = new Student();
+        student2.setName("Maksim");
+        student2.setSurname("Boliandra");
+        student2.setAge(19);
+        student2.setGroup("AM-181");
+        student2.setNumber(2);
+
+        Lecturer lector1 = new Lecturer();
+        lector1.setName("Vladimir");
+        lector1.setSurname("Vichuzhanin");
+        lector1.setAge(40);
+        lector1.setCathedra("Information technologies");
+        lector1.setSalary(20000);
+
+        Person[] people = {student1, student2, lector1};
+        for (int i = 0; i < 3; i++)
+            people[i].printInfo();
+    }
+}
+
